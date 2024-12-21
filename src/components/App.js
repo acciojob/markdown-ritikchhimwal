@@ -38,14 +38,12 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="textarea-container">
-        <textarea
-          className="textarea"
-          placeholder="Write your markdown here..."
-          value={markdown}
-          onChange={(e) => setMarkdown(e.target.value)}
-        />
-      </div>
+      <textarea
+        className="textarea"
+        placeholder="Write your markdown here..."
+        value={markdown}
+        onChange={(e) => setMarkdown(e.target.value)}
+      />
       <div className="preview-container">
         {loading ? (
           <div className="loading">Loading...</div>
