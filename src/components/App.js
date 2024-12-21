@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { marked } from "marked";
 import "./App.css";
 
 const App = () => {
@@ -7,11 +6,29 @@ const App = () => {
   const [preview, setPreview] = useState("");  // State for preview content
   const [loading, setLoading] = useState(false); // State for loading indicator
 
+  const parseMarkdown = (text) => {
+    // Replace headers
+    text = text.replace(/^###### (.*$)/gm, "<h6>$1</h6>");
+    text = text.replace(/^##### (.*$)/gm, "<h5>$1</h5>");
+    text = text.replace(/^#### (.*$)/gm, "<h4>$1</h4>");
+    text = text.replace(/^### (.*$)/gm, "<h3>$1</h3>");
+    text = text.replace(/^## (.*$)/gm, "<h2>$1</h2>");
+    text = text.replace(/^# (.*$)/gm, "<h1>$1</h1>");
+    // Replace bold
+    text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    // Replace italic
+    text = text.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    // Replace line breaks
+    text = text.replace(/\n/g, "<br />");
+
+    return text;
+  };
+
   useEffect(() => {
     // Simulate a delay for loading effect
     setLoading(true);
     const timer = setTimeout(() => {
-      setPreview(marked(markdown));
+      setPreview(parseMarkdown(markdown));
       setLoading(false);
     }, 500);
 
@@ -44,5 +61,3 @@ const App = () => {
 };
 
 export default App;
-
-
