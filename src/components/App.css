@@ -1,0 +1,40 @@
+.app {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.textarea-container,
+.preview-container {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  resize: none;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding: 20px;
+}
